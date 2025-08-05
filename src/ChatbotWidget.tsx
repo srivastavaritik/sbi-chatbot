@@ -4,6 +4,12 @@ import Offer1 from './assets/offer1.jpg';
 import Offer2 from './assets/offer2.jpg';
 import Offer3 from './assets/offer3.jpg';
 import { CarouselCard } from "./components/Carousel";
+import Chatbody from "./components/Chatbody";
+import ButtonWithIllustration from "./components/ButtonWithIllustration";
+import CarLoanSvg from './assets/car-loan.svg';
+import HomeLoanSvg from './assets/home-loan.svg';
+import PersonalLoanSvg from './assets/personal-loan.svg';
+import MobileBankingSvg from './assets/mobile-banking.svg';
 
 type Msg = {
   from: "user" | "bot";
@@ -42,7 +48,6 @@ export const ChatbotWidget: React.FC = () => {
     },
   ]);
   const [showBigOptions, setShowBigOptions] = useState(true);
-  // Accordion state
   const [accordionOpen, setAccordionOpen] = useState(false);
   const msgEndRef = useRef<HTMLDivElement>(null);
 
@@ -77,8 +82,8 @@ export const ChatbotWidget: React.FC = () => {
       setMsgs((msgs) => [...msgs, { from: "bot", text: reply }]);
     }, 800);
 
-    setShowBigOptions(false); // Hide big option buttons after first user action
-    setAccordionOpen(false);  // Optionally close accordion after quick action
+    setShowBigOptions(false);
+    setAccordionOpen(false);
   };
 
   const handleOption = (opt: Option) => {
@@ -100,6 +105,7 @@ export const ChatbotWidget: React.FC = () => {
 
   // ---- Styles ----
   const container: React.CSSProperties = {
+    backgroundColor: "rgb(240 251 255)",
     position: "fixed",
     bottom: 24,
     right: 24,
@@ -108,15 +114,15 @@ export const ChatbotWidget: React.FC = () => {
   };
 
   const card: React.CSSProperties = {
-    background: "rgb(0 60 131)",
+    background: "rgb(240 251 255)",
     borderRadius: 16,
-    width: 390,
+    width: 560,
     boxShadow: "0 2px 16px 0 rgba(0,0,0,0.16)",
     overflow: "hidden",
   };
 
   const header: React.CSSProperties = {
-    color: "#fff",
+    color: "#003c83",
     padding: "10px 24px 8px 24px",
     display: "flex",
     alignItems: "center",
@@ -128,13 +134,13 @@ export const ChatbotWidget: React.FC = () => {
     height: 32,
     borderRadius: "50%",
     marginRight: 10,
-    border: "2px solid #fff",
+    border: "2px solid #003c83",
   };
 
   const helloBlock: React.CSSProperties = {
     textAlign: "left",
     padding: "0 24px",
-    color: "#fff",
+    color: "#003c83",
   };
 
   const helloTitle: React.CSSProperties = {
@@ -164,10 +170,10 @@ export const ChatbotWidget: React.FC = () => {
   };
 
   const optionBtn: React.CSSProperties = {
-    border: "2px solid #237be2",
+    border: "2px solid #fff",
     borderRadius: 8,
-    background: "#fff",
-    color: "#237be2",
+    background: "#003c83",
+    color: "#fff",
     padding: "8px 18px",
     fontSize: 16,
     fontWeight: 500,
@@ -180,8 +186,8 @@ export const ChatbotWidget: React.FC = () => {
   const inputBlock: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
-    background: "#fff",
-    borderRadius: "30px",
+    background: "#c5daf3ff",
+    borderRadius: "1.5rem",
     boxShadow: "0 0 2px #eaeaea",
     margin: "16px 18px 18px 18px",
     padding: 6,
@@ -192,14 +198,14 @@ export const ChatbotWidget: React.FC = () => {
     outline: "none",
     flex: 1,
     fontSize: 17,
-    color: "#222",
+    color: "#000",
     padding: "6px 12px",
     background: "transparent",
   };
 
   const sendBtn: React.CSSProperties = {
     border: "none",
-    background: "#237be2",
+    background: "#003c83",
     color: "#fff",
     borderRadius: "50%",
     width: 38,
@@ -210,7 +216,7 @@ export const ChatbotWidget: React.FC = () => {
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
-    boxShadow: "0 0 2px #237be2aa",
+    boxShadow: "0 0 2px #003c83aa",
     transition: "background 0.2s",
   };
 
@@ -233,7 +239,7 @@ export const ChatbotWidget: React.FC = () => {
               style={{
                 background: "none",
                 border: "none",
-                color: "#fff",
+                color: "#003c83",
                 fontSize: 28,
                 fontWeight: 400,
                 cursor: "pointer",
@@ -248,7 +254,7 @@ export const ChatbotWidget: React.FC = () => {
           <div style={helloBlock}>
             <div style={helloTitle}>Hello</div>
             <div style={{ fontSize: 16, marginBottom: 4 }}>
-              <b>Welcome to <span style={{ color: "#fff", textShadow: "0 1px 6px #1f60b6" }}>SIA</span></b>
+              <b>Welcome to <span style={{ color: "#003c83", textShadow: "0 1px 6px #eaeaea" }}>SIA</span></b>
               {" - Your personal assistant to help you with your queries"}
             </div>
           </div>
@@ -262,9 +268,9 @@ export const ChatbotWidget: React.FC = () => {
               <button
                 style={{
                   width: "100%",
-                  background: "#fff",
-                  color: "#237be2",
-                  border: "2px solid #237be2",
+                  background: "#003c83",
+                  color: "#fff",
+                  border: "2px solid #fff",
                   borderRadius: 8,
                   padding: "10px 14px",
                   fontSize: 17,
@@ -292,9 +298,9 @@ export const ChatbotWidget: React.FC = () => {
               {accordionOpen && (
                 <div
                   style={{
-                    background: "#fff",
-                    border: "1.5px solid #237be2",
-                    boxShadow: "0 2px 10px #237be216",
+                    background: "#003c83",
+                    border: "1.5px solid #fff",
+                    boxShadow: "0 2px 10px #003c8316",
                     borderRadius: 10,
                     marginTop: 4,
                     position:"absolute",
@@ -312,6 +318,7 @@ export const ChatbotWidget: React.FC = () => {
                         fontSize: 16,
                         borderBottom: i !== options.length - 1 ? "1px solid #eee" : "none",
                         position: "relative",
+                        color: "#fff",
                       }}
                       onClick={() => {
                         handleOption(opt);
@@ -342,8 +349,14 @@ export const ChatbotWidget: React.FC = () => {
           )}
 
           {/* Chat Body */}
+          <div>
+                <div style={optionRow}> 
+                  <ButtonWithIllustration image={CarLoanSvg} title={"Car Loan"}/>
+                  <ButtonWithIllustration image={HomeLoanSvg} title={"Home Loan"}/>
+                  <ButtonWithIllustration image={PersonalLoanSvg} title={"Personal Loan"}/>
+                </div>
+</div>
           <div style={chatBody}>
-            {/* Show Big Option Buttons at the START ONLY */}
             {showBigOptions && (
               <div>
                 <div style={optionRow}>
@@ -376,8 +389,6 @@ export const ChatbotWidget: React.FC = () => {
                       </span>
                     )}
                   </button>
-                </div>
-                <div style={optionRow}>
                   <button
                     style={optionBtn}
                     onClick={() => handleOption(options[2])}
@@ -390,7 +401,6 @@ export const ChatbotWidget: React.FC = () => {
                   >
                     EMI Calculator
                   </button>
-                </div>
                 <div style={{ ...optionRow, justifyContent: "center" }}>
                   <button
                     style={optionBtn}
@@ -399,10 +409,10 @@ export const ChatbotWidget: React.FC = () => {
                     Instant Call Back
                   </button>
                 </div>
+                </div>
                 <hr style={{ color: "grey", margin: "2rem auto" }} />
               </div>
             )}
-            {/* Chat messages, user: right, bot: left */}
             {msgs.map((m, idx) => (
               <div
                 key={idx}
@@ -415,7 +425,7 @@ export const ChatbotWidget: React.FC = () => {
               >
                 <div
                   style={{
-                    background: m.from === "user" ? "#237be2" : "#f1f1f1",
+                    background: m.from === "user" ? "#003c83" : "#fffefeff",
                     color: m.from === "user" ? "#fff" : "#222",
                     borderRadius: "18px",
                     padding: "10px 16px",
@@ -424,7 +434,7 @@ export const ChatbotWidget: React.FC = () => {
                     fontSize: 15,
                     boxShadow:
                       m.from === "user"
-                        ? "0 2px 10px 0 rgba(35,123,226,0.13)"
+                        ? "0 2px 10px 0 rgba(0,60,131,0.13)"
                         : "0 1.5px 5px 0 rgba(0,0,0,0.07)",
                     textAlign: "left",
                     wordBreak: "break-word",
@@ -437,18 +447,18 @@ export const ChatbotWidget: React.FC = () => {
             <div ref={msgEndRef}></div>
           </div>
 
-          {/* Input Bar (unchanged) */}
+          {/* Input Bar */}
           <form style={inputBlock} onSubmit={handleSend} autoComplete="off">
-            <span
+            {/* <span
               style={{
                 fontSize: 22,
-                color: "#237be2",
+                color: "#fff",
                 marginLeft: 6,
                 marginRight: 8,
               }}
             >
               💬
-            </span>
+            </span> */}
             <input
               style={userInput}
               type="text"
@@ -458,7 +468,6 @@ export const ChatbotWidget: React.FC = () => {
             />
             <button style={sendBtn} type="submit" title="Send">
               <svg
-                style={{ position: "relative", top: -1 }}
                 width="21"
                 height="21"
                 viewBox="0 0 24 24"
@@ -483,9 +492,9 @@ export const ChatbotWidget: React.FC = () => {
             position: "fixed",
             bottom: 24,
             right: 24,
-            background: "#237be2",
+            background: "#003c83",
             fontSize: 28,
-            boxShadow: "0 2px 8px #237be277",
+            boxShadow: "0 2px 8px #003c8377",
             justifyContent: "center",
             alignItems: "center",
             display: "flex",
